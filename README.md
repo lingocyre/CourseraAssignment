@@ -1,2 +1,2 @@
 # CourseraAssignment
-# This repository shows the assignment of class in coursera
+# This repository shows the assignments of class in coursera
