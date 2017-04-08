@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Guessing color</title>
+  </head>
+  <body onload="do_game()">
+    <script type="text/javascript">
+    var colorlist = ["blue","cyan","gold","gray","green","magenta","orange","white","yellow"];
+    var input_color;
+    var guesses = 0;
+    var finished = false;
+    var target;
+
+    function do_game(){
+      target = Math.floor(Math.random()* colorlist.length);
+      alert(colorlist[target])
+
+      while (!finished) {
+        input_color = prompt("I am thinking of these colors \n" + colorlist.join() + "\nWhat color am I thinking of ");
+        guesses += 1;
+        finished = check_guess();
+      }
+    }
+
+
+    function check_guess(){
+      if (colorlist.includes(input_color) == false){
+        alert("Sorry, I don't recognize your color. \n Please try again.");
+        return false;
+      }
+      if (target < colorlist.indexOf(input_color)){
+        alert("Sorry, your guess is not correct! \n" + "Hint: your color is alphabetically higher than mine. \n" + "Please try again.");
+        return false;
+      }
+      if (target> colorlist.indexOf(input_color)){
+        alert("Sorry, your guess is not correct! \n" + "Hint: your color is alphabetically lower than mine. \n" + "Please try again.");
+        return false;
+      }
+      document.body.style.background = colorlist[target];
+      setTimeout(function(){alert("Congratulations! You have guessed the color! \n" + "It tooks you " + guesses + " guesses to finish the game. \n" + "you can see the background.")},200);
+      return true;
+    }
+
+    </script>
+
+  </body>
+</html>
